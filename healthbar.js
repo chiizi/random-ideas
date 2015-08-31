@@ -32,7 +32,7 @@ var changeHealth = (function() {
       return;
     }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#" + Math.round(Math.min((100 - health - amount) * 2.56), 255).toString(16) + Math.round(Math.min((health + amount) * 2.56), 255).toString(16) + "00";
+    ctx.fillStyle = ("#" + Math.round(Math.min((100 - health - amount) * 2.56), 255).toString(16) + Math.round(Math.min((health + amount) * 2.56), 255).toString(16) + "00").substring(0);
     ctx.fillRect(0, 0, health / healthmax * canvas.width, canvas.height);
     requestAnimationFrame(function() {
       if (STOP) return;
