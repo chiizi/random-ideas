@@ -9,7 +9,7 @@ var changeHealth = (function() {
   var ctx = canvas.getContext("2d");
   
   var actual = function(amount, count) {
-    if (count = 0) {
+    if (count == 0 || health == healthmax) {
       return;
     }
     health += amount;
