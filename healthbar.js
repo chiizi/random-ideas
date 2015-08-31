@@ -1,10 +1,10 @@
+var health = 0;
+health.max = 100;
+
 var changeHealth = (function() {
   var canvas = document.getElementById("healthbar");
   canvas.width = 200;
   canvas.height = 8;
-  
-  var health = 0;
-  health.max = 100;
   
   var ctx = canvas.getContext("2d");
   
