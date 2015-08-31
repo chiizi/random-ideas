@@ -1,4 +1,4 @@
-var health = 0;
+var health = new Number(0);
 health.max = 100;
 
 var changeHealth = (function() {
