@@ -9,6 +9,7 @@ var changeHealth = (function() {
   var ctx = canvas.getContext("2d");
   
   var actual = function(amount, count) {
+    console.log(arguments);
     if (count == 0 || health >= healthmax) {
       return;
     }
