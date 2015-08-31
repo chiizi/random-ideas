@@ -8,8 +8,14 @@ var changeHealth = (function() {
   
   var ctx = canvas.getContext("2d");
   
+  (function() {
+    var a = document.createElement("code");
+    a.id = "debug";
+    document.body.appendChild(a);
+  })();
+  
   var actual = function(amount, count) {
-    console.log(arguments);
+    document.getElementById("debug").innerHTML = arguments.slice(0).toString().replace(",", ", ");
     if (count == 0 || health >= healthmax) {
       return;
     }
