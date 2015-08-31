@@ -7,24 +7,20 @@ var changeHealth = (function() {
   health.max = 100;
   
   var ctx = canvas.getContext("2d");
-  return function(amount, time, total) {
-    if (arguments.length = 2) {
-      requestAnimationFrame(function() {
-        changeHealth(amount, time, amount);
-      });
-    }
-    time = (time > 0 ? time * -60 : time) + 1;
-    if (time = 0) {
-      return;
-    }
-    amount = Math.min(health.max - health, amount);
-    total = amount;
-    amount = amount / (1 + 1 / -time);
+  
+  var actual = function(amount, count) {
+    health += amount;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#" + Math.round((100 - health - amount) * 2.56).toString(16) + Math.round((health + amount) * 2.56).toString(16) + "00";
-    ctx.fillRect(0, 0, (health + total - amount) / health.max * canvas.width, canvas.height);
+    ctx.fillRect(0, 0, health / health.max * canvas.width, canvas.height);
     requestAnimationFrame(function() {
-      changeHealth(amount, time, total);
+      actual(amount, count - 1);
+    });
+  };
+  
+  return function(amount, time) {
+    requestAnimationFrame(function() {
+      actual(amount / (time * 60), time * 60);
     });
   };
 })();
