@@ -15,7 +15,7 @@ var changeHealth = (function() {
   })();
   
   var actual = function(amount, count) {
-    document.getElementById("debug").innerHTML = arguments.slice(0).toString().replace(",", ", ");
+    document.getElementById("debug").innerHTML = Array.prototype.slice.call(arguments, 0).toString().replace(",", ", ");
     if (count == 0 || health >= healthmax) {
       return;
     }
