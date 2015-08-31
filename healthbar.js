@@ -24,10 +24,13 @@ var changeHealth = (function() {
   var actual = function(amount, count) {
     if (STOP) return;
     document.getElementById("debug").innerHTML = Array.prototype.slice.call(arguments, 0).toString().replace(",", ", ");
+    health += amount;
+    if (health > healthmax) {
+      health = healthmax;
+    }
     if (count == 0 || health >= healthmax) {
       return;
     }
-    health += amount;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#" + Math.round((100 - health - amount) * 2.56).toString(16) + Math.round((health + amount) * 2.56).toString(16) + "00";
     ctx.fillRect(0, 0, health / healthmax * canvas.width, canvas.height);
